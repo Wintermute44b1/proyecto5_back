@@ -1,17 +1,17 @@
 const { Router } = require("express");
 
 const {
-  obtenerUsuarios,
-  crearUsuario,
-  actualizarUsuario,
-  eliminarUsuario,
+  obtenerProducto,
+  crearProducto,
+  actualizarProducto,
+  eliminarProducto,
 } = require("../controllers/users.ctrl");
 
 const router = Router();
 
-router.get("/", obtenerUsuarios);
-router.post("/", crearUsuario);
-router.put("/:id", actualizarUsuario);
-router.delete("/:id", eliminarUsuario);
+router.get("/", obtenerProducto);
+router.post("/", crearProducto);
+router.put("/:id", actualizarProducto);
+router.delete("/:id", eliminarProducto);
 
 module.exports = router;

@@ -14,6 +14,20 @@ const ProductSchema = Schema ({
     cost:{
         type: Number,
         required: [true,"el precio es obligatorio!"]
+    
+    },
+    description:{
+        type: String,
+    },
+
+
+    status: {
+        type: Boolean,
+        default: true
     }
+
+
     
 })
+
+module.exports = model("product", UserSchema, "products");

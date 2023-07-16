@@ -20,22 +20,22 @@ const obtenerProductos = async (req, res) => {
 
 const crearProducto = async (req, res) => {
   try {
-    const { user_name, password, email, age, status } = req.body;
+    const {product_name, quantity, cost, description, status } = req.body;
 
-    const nuevo_usuario = {
-      user_name,
-      password,
-      email,
-      age,
+    const nuevo_producto = {
+      product_name,
+      quantity,
+      cost,
+      description,
       status,
     };
 
-    const new_user = await User(nuevo_usuario).save();
+    const new_product = await Product(nuevo_producto).save();
 
     return res.json({
       ok: true,
-      msg: "Usuario creado",
-      data: new_user,
+      msg: "Producto agregado",
+      data: new_product,
     });
   } catch (error) {
     return res.status(500).json({
@@ -46,20 +46,20 @@ const crearProducto = async (req, res) => {
   }
 };
 
-const actualizarUsuario = async (req, res) => {
+const actualizarProducto = async (req, res) => {
   try {
     const { id } = req.params;
-    const { user_name, password, email, age, status } = req.body;
+    const { product_name, quantity, cost, description, status  } = req.body;
 
     const informacion_nueva = {
-      user_name,
-      password,
-      email,
-      age,
+      product_name,
+      quantity,
+      cost,
+      description,
       status,
     };
 
-    const usuario_actualizado = await User.findByIdAndUpdate(
+    const producto_actualizado = await Product.findByIdAndUpdate(
       id,
       informacion_nueva,
       { new: true }
@@ -67,8 +67,8 @@ const actualizarUsuario = async (req, res) => {
 
     return res.json({
       ok: true,
-      msg: "Usuario actualizado",
-      data: usuario_actualizado,
+      msg: "Informacion actualizada",
+      data: producto_actualizado,
     });
   } catch (error) {
     return res.status(500).json({
@@ -79,16 +79,16 @@ const actualizarUsuario = async (req, res) => {
   }
 };
 
-const eliminarUsuario = async (req, res) => {
+const eliminarProducto = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const usuario_eliminado = await User.findByIdAndRemove(id);
+    const producto_eliminado = await Product.findByIdAndRemove(id);
 
     return res.json({
       ok: true,
-      msg: "Usuario eliminado",
-      data: usuario_eliminado,
+      msg: "Producto eliminado!",
+      data: producto_eliminado,
     });
   } catch (error) {
     return res.status(500).json({
@@ -100,8 +100,8 @@ const eliminarUsuario = async (req, res) => {
 };
 
 module.exports = {
-  obtenerUsuarios,
-  crearUsuario,
-  actualizarUsuario,
-  eliminarUsuario,
+crearProducto,
+crearProducto,
+actualizarProducto,
+eliminarProducto,
 };
